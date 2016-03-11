@@ -12,8 +12,13 @@ namespace UniversalAnalyticsHttpWrapper
     {
         public void SendData(Uri googleCollectionUri, string postData)
         {
-            HttpWebRequest httpRequest = WebRequest.CreateHttp(googleCollectionUri);
-            httpRequest.ContentLength = Encoding.UTF8.GetByteCount(postData);
+			if (!googleCollectionUri.Scheme.StartsWith("http"))
+			{
+				throw new ArgumentException("Url scheme must be http.", "googleCollectionUri");
+			}
+
+			HttpWebRequest httpRequest = WebRequest.Create(googleCollectionUri) as HttpWebRequest;
+			httpRequest.ContentLength = Encoding.UTF8.GetByteCount(postData);
             httpRequest.Method = "POST";
             using(Stream requestStream = httpRequest.GetRequestStream())
             {
