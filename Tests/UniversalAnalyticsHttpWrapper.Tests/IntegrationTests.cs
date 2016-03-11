@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using System.Configuration.Abstractions;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -12,7 +11,7 @@ namespace UniversalAnalyticsHttpWrapper.Tests
     [TestFixture]
     public class IntegrationTests
     {
-        private readonly UniversalAnalyticsEventFactory eventFactory = new UniversalAnalyticsEventFactory(new ConfigurationManager());
+        private readonly UniversalAnalyticsEventFactory eventFactory = new UniversalAnalyticsEventFactory("tracking id");
 
         [Test, Ignore("Integration tests.")]
         public void SampleCodeForGitHubReadMeUsingFactoryToGetEventObject()
