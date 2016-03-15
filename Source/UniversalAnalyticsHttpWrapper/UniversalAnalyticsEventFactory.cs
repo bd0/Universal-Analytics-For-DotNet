@@ -23,6 +23,11 @@ namespace UniversalAnalyticsHttpWrapper
 		/// </summary>
 		public UniversalAnalyticsEventFactory(string universalAnalyticsTrackingId)
         {
+			if (string.IsNullOrWhiteSpace(universalAnalyticsTrackingId))
+			{
+				throw new ArgumentNullException("universalAnalyticsTrackingId", "Analytics tracking id is not set.");
+			}
+
 			this.universalAnalyticsTrackingId = universalAnalyticsTrackingId;
 		}
 

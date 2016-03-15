@@ -41,6 +41,15 @@ namespace UniversalAnalyticsHttpWrapper
                 nameValueCollection[PARAMETER_KEY_EVENT_VALUE] = analyticsEvent.EventValue;
             }
 
+			// Set any additional parameters that have been specified.
+			if (analyticsEvent.AdditionalParameters != null)
+			{
+				foreach(var kvp in analyticsEvent.AdditionalParameters)
+				{
+					nameValueCollection[kvp.Key] = kvp.Value;
+				}
+			}
+
             return nameValueCollection.ToString();
         }
 

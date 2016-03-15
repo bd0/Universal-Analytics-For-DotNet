@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace UniversalAnalyticsHttpWrapper
@@ -56,7 +57,9 @@ namespace UniversalAnalyticsHttpWrapper
             this.eventLabel = eventLabel;
             this.eventValue = eventValue;
 
-            ValidateRequiredFields();
+			this.AdditionalParameters = new Dictionary<string, string>();
+
+			ValidateRequiredFields();
         }
 
         /// <summary>
@@ -107,7 +110,15 @@ namespace UniversalAnalyticsHttpWrapper
             get { return this.eventValue; }
         }
 
-        private void ValidateRequiredFields()
+		/// <summary>
+		/// Allows setting additional parameters for the request.
+		/// Use the Key as the parameter name and the Value as the 
+		/// parameter value.
+		/// </summary>
+		public IDictionary<string, string> AdditionalParameters { get; private set; }
+
+
+		private void ValidateRequiredFields()
         {
             if (string.IsNullOrWhiteSpace(this.trackingId))
             {

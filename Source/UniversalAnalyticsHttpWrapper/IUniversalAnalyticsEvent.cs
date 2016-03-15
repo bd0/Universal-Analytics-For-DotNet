@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace UniversalAnalyticsHttpWrapper
 {
     /// <summary>
@@ -31,5 +33,12 @@ namespace UniversalAnalyticsHttpWrapper
         /// Gets the event value for this event.
         /// </summary>
         string EventValue { get; }
+
+		/// <summary>
+		/// Allows setting additional parameters for the request.
+		/// Use the Key as the parameter name and the Value as the 
+		/// parameter value.
+		/// </summary>
+		IDictionary<string, string> AdditionalParameters { get; }
     }
 }
