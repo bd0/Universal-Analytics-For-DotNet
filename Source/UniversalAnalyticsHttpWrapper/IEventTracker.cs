@@ -14,6 +14,6 @@ namespace UniversalAnalyticsHttpWrapper
         /// 
         /// </summary>
         /// <param name="analyticsEvent"></param>
-        void TrackEvent(IUniversalAnalyticsEvent analyticsEvent);
+        string TrackEvent(IUniversalAnalyticsEvent analyticsEvent);
     }
 }
